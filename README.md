@@ -1,6 +1,13 @@
-# symptom-triage skill
+# claudeskilltest — medical skills
 
-A Claude skill that triages user-described symptoms and returns structured health guidance (possible causes, home care, red flags, disclaimer).
+A small collection of Claude skills for medical/health questions.
+
+- **`symptom-triage`** — structured guidance for user-described symptoms (causes, home care, red flags, disclaimer).
+- **`medication-helper`** *(master)* — routes medication questions to the right sub-skill and enforces a consistent safety posture.
+  - **`drug-interaction-check`** *(sub)* — pairwise/multi-substance interaction analysis (drugs, supplements, food, alcohol).
+  - **`dosage-guide`** *(sub)* — dosing, timing, missed-dose, and population adjustments.
+
+`medication-helper` is the entry point for any drug question; it classifies the request and delegates to `drug-interaction-check` or `dosage-guide`.
 
 ## Install
 
@@ -9,24 +16,39 @@ A Claude skill that triages user-described symptoms and returns structured healt
 git clone https://github.com/abhibattini/claudeskilltest.git
 mkdir -p ~/.claude/skills
 cp -r claudeskilltest/symptom-triage ~/.claude/skills/
+cp -r claudeskilltest/medication-helper ~/.claude/skills/
+cp -r claudeskilltest/drug-interaction-check ~/.claude/skills/
+cp -r claudeskilltest/dosage-guide ~/.claude/skills/
 ```
 
 ### Claude Code (project-scoped)
 ```bash
 mkdir -p .claude/skills
 cp -r /path/to/claudeskilltest/symptom-triage .claude/skills/
+cp -r /path/to/claudeskilltest/medication-helper .claude/skills/
+cp -r /path/to/claudeskilltest/drug-interaction-check .claude/skills/
+cp -r /path/to/claudeskilltest/dosage-guide .claude/skills/
 ```
 
 ### Claude.ai / Claude Desktop
-Upload `symptom-triage/SKILL.md` (or zip the `symptom-triage/` folder as `symptom-triage.skill`) via the Skills UI.
+Upload each skill's `SKILL.md` (or zip each folder as `<name>.skill`) via the Skills UI.
 
 ## Verify
-Start Claude Code and ask something like *"I have a sore throat and mild fever for 2 days"* — the skill should activate and respond in the four-section format.
+Start Claude Code and try:
+- *"I have a sore throat and mild fever for 2 days"* → `symptom-triage`
+- *"Can I take ibuprofen with my blood thinner?"* → `medication-helper` → `drug-interaction-check`
+- *"How much paracetamol can an adult take per day?"* → `medication-helper` → `dosage-guide`
 
 ## Structure
 ```
-symptom-triage/
-└── SKILL.md   # frontmatter (name, description) + instructions
+symptom-triage/             # standalone
+└── SKILL.md
+medication-helper/          # master — routes to sub-skills below
+└── SKILL.md
+drug-interaction-check/     # sub-skill
+└── SKILL.md
+dosage-guide/               # sub-skill
+└── SKILL.md
 ```
 
 ## Disclaimer
