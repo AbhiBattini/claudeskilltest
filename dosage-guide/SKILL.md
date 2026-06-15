@@ -38,7 +38,7 @@ Ask **one** clarifying question only if the answer materially changes the respon
 
 ### 🚨 Overdose Signs
 - Brief list of symptoms that warrant calling poison control / emergency services
-- Include the local poison control number prompt: "(US: 1-800-222-1222; check your country's number)"
+- Always include: "US Poison Control: 1-800-222-1222 — check your country's equivalent number"
 
 End with the master skill's required closing line.
 

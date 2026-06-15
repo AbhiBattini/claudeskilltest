@@ -45,4 +45,4 @@ End with the master skill's required closing line.
 - **Grapefruit + CYP3A4 substrates** (statins, some calcium channel blockers, tacrolimus, etc.): always mention.
 - **Serotonergic combinations** (SSRIs + tramadol/MAOIs/triptans/St John's wort): flag serotonin syndrome.
 - **Anticoagulants + NSAIDs/aspirin/SSRIs**: flag bleeding risk.
-- **Unknown drug name**: do not guess — ask the user to confirm spelling or share the active ingredient.
+- **Unknown drug name**: do not guess — ask the user to confirm spelling, share the active ingredient, or check the package label. Brand and generic names can differ significantly by region.
