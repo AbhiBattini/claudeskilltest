@@ -15,23 +15,19 @@ A small collection of Claude skills for medical/health questions.
 ```bash
 git clone https://github.com/abhibattini/claudeskilltest.git
 mkdir -p ~/.claude/skills
-cp -r claudeskilltest/symptom-triage ~/.claude/skills/
-cp -r claudeskilltest/medication-helper ~/.claude/skills/
-cp -r claudeskilltest/drug-interaction-check ~/.claude/skills/
-cp -r claudeskilltest/dosage-guide ~/.claude/skills/
+cp -r claudeskilltest/{symptom-triage,medication-helper,drug-interaction-check,dosage-guide} ~/.claude/skills/
 ```
 
 ### Claude Code (project-scoped)
 ```bash
 mkdir -p .claude/skills
-cp -r /path/to/claudeskilltest/symptom-triage .claude/skills/
-cp -r /path/to/claudeskilltest/medication-helper .claude/skills/
-cp -r /path/to/claudeskilltest/drug-interaction-check .claude/skills/
-cp -r /path/to/claudeskilltest/dosage-guide .claude/skills/
+cp -r /path/to/claudeskilltest/{symptom-triage,medication-helper,drug-interaction-check,dosage-guide} .claude/skills/
 ```
 
 ### Claude.ai / Claude Desktop
 Upload each skill's `SKILL.md` (or zip each folder as `<name>.skill`) via the Skills UI.
+
+> **Note:** `drug-interaction-check` and `dosage-guide` are sub-skills invoked by `medication-helper`. Install all four so routing works correctly.
 
 ## Verify
 Start Claude Code and try:
